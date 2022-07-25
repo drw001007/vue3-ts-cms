@@ -1,8 +1,8 @@
-import { App } from 'vue'
+// import { App } from 'vue'
 
-import registerElement from './register-element'
+// import registerElement from './register-element'
 
-export function globalRegister(app: App): void {
-  // registerElement(app)
-  app.use(registerElement)
-}
+// export function globalRegister(app: App): void {
+//   // registerElement(app)
+//   app.use(registerElement)
+// }

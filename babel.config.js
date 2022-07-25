@@ -6,16 +6,11 @@ module.exports = {
     //   {
     //     libraryName: 'element-plus',
     //     customStyleName: (name) => {
+    //       console.log(name)
     //       return `element-plus/theme-chalk/${name}.css`
     //     }
     //   }
     // ]
-    // AutoImport({
-    //   resolvers: [ElementPlusResolver()]
-    // }),
-    // Components({
-    //   resolvers: [ElementPlusResolver()]
-    // })
   ],
   presets: ['@vue/cli-plugin-babel/preset']
 }

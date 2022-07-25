@@ -13,16 +13,16 @@ module.exports = defineConfig({
       alias: {
         components: '@/components'
       }
-    }
+    },
     // 按需引入element-plus组件和样式
-    // plugins: [
-    //   AutoImport({
-    //     resolvers: [ElementPlusResolver()]
-    //   }),
-    //   Components({
-    //     resolvers: [ElementPlusResolver()]
-    //   })
-    // ]
+    plugins: [
+      AutoImport({
+        resolvers: [ElementPlusResolver()]
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()]
+      })
+    ]
   }
   // 2.当前修改会覆盖webpack里面的配置
   // configureWebpack: (config) => {

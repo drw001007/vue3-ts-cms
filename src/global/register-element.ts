@@ -1,13 +1,14 @@
-import { App } from 'vue'
+// import { App } from 'vue'
 
-import 'element-plus/theme-chalk/el-button.css'
-import 'element-plus/theme-chalk/el-input.css'
-import { ElButton, ElForm, ElInput } from 'element-plus'
+// import 'element-plus/theme-chalk/el-button.css'
+// import 'element-plus/theme-chalk/el-input.css'
+// import { ElButton, ElForm, ElInput } from 'element-plus'
 
-const components = [ElButton, ElForm, ElInput]
+// const components = [ElButton, ElForm, ElInput]
+// console.log(components)
 
-export default function (app: App): void {
-  for (const component of components) {
-    app.component(component.name, component)
-  }
-}
+// export default function (app: App): void {
+//   for (const component of components) {
+//     app.component(component.name, component)
+//   }
+// }
