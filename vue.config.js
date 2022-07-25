@@ -1,8 +1,8 @@
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
-import Icons from 'unplugin-icons/webpack'
-import IconsResolver from 'unplugin-icons/resolver'
+// import Icons from 'unplugin-icons/webpack'
+// import IconsResolver from 'unplugin-icons/resolver'
 
 // const path = require('path')
 
@@ -21,29 +21,29 @@ module.exports = defineConfig({
       AutoImport({
         resolvers: [
           // 自动导入 Element Plus 组件
-          ElementPlusResolver(),
+          ElementPlusResolver()
           // Auto import icon components
           // 自动导入图标组件
-          IconsResolver({
-            prefix: 'Icon'
-          })
+          //   IconsResolver({
+          //     prefix: 'Icon'
+          //   })
         ]
       }),
       Components({
         // 自动注册 Element Plus 组件
         resolvers: [
-          ElementPlusResolver(),
+          ElementPlusResolver()
           // Auto register icon components
           // 自动注册图标组件
-          IconsResolver({
-            enabledCollections: ['ep']
-          })
+          // IconsResolver({
+          //   enabledCollections: ['ep']
+          // })
         ]
-      }),
-      Icons({
-        // expiremental
-        autoInstall: true
       })
+      // Icons({
+      //   // expiremental
+      //   autoInstall: true
+      // })
     ]
   }
   // 2.当前修改会覆盖webpack里面的配置
