@@ -1,6 +1,8 @@
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+import Icons from 'unplugin-icons/webpack'
+import IconsResolver from 'unplugin-icons/resolver'
 
 // const path = require('path')
 
@@ -17,10 +19,30 @@ module.exports = defineConfig({
     // 按需引入element-plus组件和样式
     plugins: [
       AutoImport({
-        resolvers: [ElementPlusResolver()]
+        resolvers: [
+          // 自动导入 Element Plus 组件
+          ElementPlusResolver(),
+          // Auto import icon components
+          // 自动导入图标组件
+          IconsResolver({
+            prefix: 'Icon'
+          })
+        ]
       }),
       Components({
-        resolvers: [ElementPlusResolver()]
+        // 自动注册 Element Plus 组件
+        resolvers: [
+          ElementPlusResolver(),
+          // Auto register icon components
+          // 自动注册图标组件
+          IconsResolver({
+            enabledCollections: ['ep']
+          })
+        ]
+      }),
+      Icons({
+        // expiremental
+        autoInstall: true
       })
     ]
   }

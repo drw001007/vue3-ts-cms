@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <router-view></router-view>
   </div>
 </template>
@@ -21,4 +21,7 @@ export default defineComponent({
 //   color: #2c3e50;
 //   margin-top: 60px;
 // }
+.app {
+  height: 100%;
+}
 </style>
