@@ -38,7 +38,10 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    // 自动导入注册element-plus组件插件的类型文件
+    "./auto-imports.d.ts",
+    "./components.d.ts"
   ],
   "exclude": ["node_modules"]
 }
