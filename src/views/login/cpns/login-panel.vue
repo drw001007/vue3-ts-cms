@@ -1,8 +1,8 @@
 <template>
   <div class="login-panel">
     <h1 class="title">后台管理系统</h1>
-    <el-tabs type="border-card" class="demo-tabs" stretch>
-      <el-tab-pane>
+    <el-tabs type="border-card" class="demo-tabs" stretch v-model="currentTab">
+      <el-tab-pane name="account">
         <template #label>
           <span class="custom-tabs-label">
             <el-icon><UserFilled /></el-icon>
@@ -11,14 +11,14 @@
         </template>
         <login-account ref="accountRef" />
       </el-tab-pane>
-      <el-tab-pane>
+      <el-tab-pane name="phone">
         <template #label>
           <span class="custom-tabs-label">
             <el-icon><Cellphone /></el-icon>
             <span>手机登录</span>
           </span>
         </template>
-        <login-phone />
+        <login-phone ref="phoneRef" />
       </el-tab-pane>
     </el-tabs>
 
@@ -47,13 +47,26 @@ export default defineComponent({
   setup() {
     const isKeepPassword = ref(true)
 
+    // 拿到的组件都是组件描述对象，在template里面使用是通过组件描述对象创建对应的组件实例
+    // 拿到当前组件的描述对象，通过typeof获取组件描述对象类型，使用InstanceType获取当前描述对象拥有构造函数的实例，从而确定返回对象的类型
     const accountRef = ref<InstanceType<typeof LoginAccount>>()
+    const phoneRef = ref<InstanceType<typeof LoginPhone>>()
+    const currentTab = ref('account')
 
     const handleLoginClick = () => {
-      console.log('立即登录')
-      accountRef.value?.accountAction()
+      if (currentTab.value === 'account') {
+        accountRef.value?.accountAction(isKeepPassword.value)
+      } else {
+        phoneRef.value?.phoneAction()
+      }
     }
-    return { isKeepPassword, handleLoginClick, accountRef }
+    return {
+      isKeepPassword,
+      handleLoginClick,
+      accountRef,
+      phoneRef,
+      currentTab
+    }
   }
 })
 </script>

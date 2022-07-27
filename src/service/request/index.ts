@@ -28,7 +28,6 @@ class RWRequest {
 
     this.instance.interceptors.request.use(
       (config) => {
-        console.log('所有实例都会有的请求拦截器')
         if (this.showLoading) {
           this.loading = ElLoading.service({
             lock: true,
@@ -44,8 +43,6 @@ class RWRequest {
     )
     this.instance.interceptors.response.use(
       (res) => {
-        console.log('所有实例都会有的响应成功拦截器')
-
         // 将loading移除
         this.loading?.close()
 
@@ -57,8 +54,6 @@ class RWRequest {
         }
       },
       (err) => {
-        console.log('所有实例都会有的响应失败拦截器')
-
         // 将loading移除
         this.loading?.close()
 
@@ -75,7 +70,6 @@ class RWRequest {
     return new Promise((resolve, reject) => {
       // 1.单个请求对请求config的处理
       if (config.intercepters?.requestInterceptor) {
-        console.log(config, '单独请求')
         config = config.intercepters.requestInterceptor(config)
       }
 
