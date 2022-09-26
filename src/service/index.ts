@@ -1,15 +1,20 @@
 import RWRequest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
 
+import localCache from '@/utils/cache'
 const rwRequest = new RWRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   intercepters: {
     requestInterceptor: (config) => {
       // 携带token拦截
-      const token = ''
+      const token = localCache.getCache('token')
       if (token) {
-        // config.headers.AuthorizaTion = `Bearer ${token}`
+        // 当前headers属性是可以选的，直接赋值会报错
+        // if (config.headers) {
+        //   config.headers.Authorization = `Bearer ${token}`
+        // }
+        config.headers!.Authorization = `Bearer ${token}`
       }
       return config
     },
@@ -21,19 +26,6 @@ const rwRequest = new RWRequest({
     },
     responseInterceptorCatch: (err) => {
       return err
-    }
-  }
-})
-
-rwRequest.request({
-  url: '',
-  method: 'GET',
-  intercepters: {
-    requestInterceptor: (config) => {
-      return config
-    },
-    responseInterceptor: (res) => {
-      return res
     }
   }
 })

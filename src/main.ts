@@ -11,12 +11,13 @@ import './assets/css/index.less'
 // import 'element-plus/theme-chalk/index.css'
 
 // 按需必须引用的base样式
-// import 'element-plus/theme-chalk/base.css'
+import 'element-plus/theme-chalk/base.css'
 
 import App from './App.vue'
 
 import router from './router/index'
 import store from './store/index'
+import { setupStore } from './store'
 const app = createApp(App)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -24,7 +25,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 // app.use(globalRegister)
-app.use(router)
 app.use(store)
+setupStore()
+app.use(router)
 // app.use(ElementPlus)
 app.mount('#app')

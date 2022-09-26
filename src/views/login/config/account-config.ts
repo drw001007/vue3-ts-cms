@@ -10,7 +10,8 @@ export const rules = {
   password: [
     { required: true, message: '密码是必填的内容', trigger: 'blur' },
     {
-      pattern: /^[a-zA-Z]\w{5,17}$/,
+      // pattern: /^[a-zA-Z]\w{5,17}$/,
+      pattern: /^\d{6,18}$/,
       message:
         '密码必须是以字母开头，长度在6~18之间，只能包含字母、数字和下划线',
       trigger: 'blur'

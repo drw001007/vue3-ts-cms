@@ -9,6 +9,18 @@ const path = require('path')
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://152.136.185.210:4000/',
+        pathRewrite: {
+          '^/api': ''
+        },
+        secure: false,
+        changeOrigin: true
+      }
+    }
+  },
   // 1.当前修改会合并到webpack
   configureWebpack: {
     resolve: {

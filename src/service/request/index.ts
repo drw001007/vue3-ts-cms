@@ -66,7 +66,7 @@ class RWRequest {
     )
   }
 
-  request<T>(config: RWReuqestConfig<T>): Promise<T> {
+  request<T = any>(config: RWReuqestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // 1.单个请求对请求config的处理
       if (config.intercepters?.requestInterceptor) {
@@ -102,19 +102,19 @@ class RWRequest {
     })
   }
 
-  get<T>(config: RWReuqestConfig<T>): Promise<T> {
+  get<T = any>(config: RWReuqestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'GET' })
   }
 
-  post<T>(config: RWReuqestConfig<T>): Promise<T> {
+  post<T = any>(config: RWReuqestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'POST' })
   }
 
-  delete<T>(config: RWReuqestConfig<T>): Promise<T> {
+  delete<T = any>(config: RWReuqestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'DELETE' })
   }
 
-  patch<T>(config: RWReuqestConfig<T>): Promise<T> {
+  patch<T = any>(config: RWReuqestConfig<T>): Promise<T> {
     return this.request({ ...config, method: 'PATCH' })
   }
 }
